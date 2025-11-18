@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registation</title>
+    <style>
+        body {
+            background-color: antiquewhite;
+            margin: 20px;
+        }
+
+        .headd {
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        form {
+            background-color: white;
+            border-radius: 10px;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        .errormassage {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="headd">
+        <h1>Event Registation Form</h1>
+    </div>
+
+    <div class="">
+        <form id="regForm">
+            <div>
+                <label>Enter Your Name:</label>
+                <input type="text" id="fullname">
+                <p id="nameError" class="errormassage"></p>
+            </div>
+
+            <div>
+                <label>Enter Your Email:</label>
+                <input type="email" id="email">
+                <p id="emailError" class="errormassage"></p>
+            </div>
+
+            <div>
+                <label>Institution Field:</label>
+                <textarea id="institution"></textarea>
+                <p id="instError" class="errormassage"></p>
+            </div>
+
+            <div>
+                <label>Attendance:</label>
+                <input type="radio" name="attendance" value="Virtual"> Virtual
+                <input type="radio" name="attendance" value="In-Person"> In-Person
+                <p id="attError" class="errormassage"></p>
+            </div>
+
+            <button type="button" onclick="validateForm()">Register</button><br><br>
+            <button type="button" id="analyticsBtn" onclick="toggleAnalytics()">Show Event Analytics</button>
+
+            <div>
+                <h3>Event Statistics</h3>
+                <p><strong>Total Registrants:</strong> <span id="totalCount">0</span></p>
+                <p><strong>Virtual Attendees:</strong> <span id="virtual">0</span></p>
+                <p><strong>In-Person Attendees:</strong> <span id="inPersonal">0</span></p>
+            </div>
+
+        </form>
+
+        <script>
+            function validateForm() {
+                let name = document.getElementById("fullname").value.trim();
+                let email = document.getElementById("email").value.trim();
+                let institution = document.getElementById("institution").value.trim();
+                let attendance = document.querySelector('input[name="attendance"]:checked');
+
+
+
+                document.getElementById("nameError").innerText = "";
+                document.getElementById("emailError").innerText = "";
+                document.getElementById("instError").innerText = "";
+                document.getElementById("attError").innerText = "";
+
+
+
+
+                let valid = true;
+
+
+                if (name.length < 6 || name.length > 100) {
+                    document.getElementById("nameError").innerText =
+                        "Name must be between 6 and 100 characters.";
+                    valid = false;
+                }
+
+                let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(email)) {
+                    document.getElementById("emailError").innerText =
+                        "Please enter a valid professional email address.";
+                    valid = false;
+                }
+
+
+
+                if (institution.length > 100) {
+                    document.getElementById("instError").innerText =
+                        "Institution name cannot exceed 100 characters.";
+                    valid = false;
+                }
+
+                if (!attendance) {
+                    document.getElementById("attError").innerText =
+                        "Please select your attendance type.";
+                    valid = false;
+                }
+
+
+
+                let totalRegistrants = 0;
+                let virtualCount = 0;
+                let inPersonCount = 0;
+                if (valid) {
+                    alert(" Done Registration ");
+                    totalRegistrants++;
+                    if (attendance.value === "Virtual") {
+                        virtualCount++;
+                    } else {
+                        inPersonalCount++;
+
+                    }
+                    AnalyticsDisplay();
+                }
+
+                function AnalyticsDisplay() {
+                    document.getElementById("total").innerText = totalRegistrants;
+                    document.getElementById("virtual").innerText = virtualCount;
+                    document.getElementById("inPersonal").innerText = inPersonCount;
+                }
+            }
+
+        </script>
+
+
+
+
+    </div>
+</body>
+
+</html>
