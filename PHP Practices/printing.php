@@ -59,3 +59,48 @@ foreach ($colors as $value) {
   echo "$value <br>";
 }
 ?>
+
+<?php
+function addNumbers(int $a, int $b) {
+return $a + $b;
+}
+echo addNumbers(5, 5);
+?>
+
+<?php
+class Fruit {
+// Properties
+public $name;
+// Methods
+function set_name($name) {
+$this->name = $name;
+}
+function get_name() {
+return $this->name;
+}
+}
+$apple = new Fruit();
+$apple->set_name('Apple');
+echo $apple->get_name();
+?>
+
+
+<?php
+$color = "red";
+echo "My car is " . $color . "<br>";
+//echo "My house is " . $COLOR . "<br>";
+//echo "My boat is " . $coLOR . "<br>";
+?>
+<?php
+$x = 5985;
+var_dump($x);
+?>
+<?php
+$x = 10.365;
+var_dump($x);
+?>
+<?php
+$x = "Hello world!";
+$x = null;
+var_dump($x);
+?>
