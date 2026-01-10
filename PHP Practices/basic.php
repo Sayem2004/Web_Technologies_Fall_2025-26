@@ -14,7 +14,11 @@
     miulitpe 
     line comment
     */
-    echo"Good Night"
+    echo"Good Night";
+    $a =10;
+    $b = "30.75";
+    echo $a+ $b;
+    echo $a * $b;
     ?>
 </body>
 </html>
