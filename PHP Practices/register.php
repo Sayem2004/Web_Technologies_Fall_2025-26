@@ -31,6 +31,9 @@ if (!empty($errors)) {
     Email:<br>
     <input type="text" name="email"><br><br>
 
+    Number:<br>
+    <input type="number" name="number"><br><br>
+
     Password:<br>
     <input type="password" name="password"><br><br>
 
